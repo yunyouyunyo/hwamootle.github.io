@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project2</title>
+    <style type="text/css">
+        /* @media only screen and (max-width:600px) { */
+            body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(135, 164, 189);
+        }
+
+       
+            
+        /* } */
+        #text {
+            background-color: blueviolet;
+        }
+
+        #game-container {
+            display: flex;
+        }
+
+        #game {
+            align-items: center;
+            justify-content: center;
+        }
+
+        #sidebar {
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+            width: 250px;
+            height: 427px;
+        }
+
+        #timer {
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+            /* line-height: 106px; */
+            position: relative;
+            
+            bottom: 15%;
+            
+
+        }
+
+        #record {
+            position: relative;
+            bottom:15%;
+       
+            text-align: center;
+            color: #fff;
+            font-size: 24px;
+            /* line-height: 106px; */
+
+        }
+
+        #level {
+            text-align: center;
+            color: #fff;
+            font-size: 36px;
+        }
+
+        #show {
+            width: 150px;
+            background-color: rgb(161, 182, 165);
+            
+            /* border: 1cap; */
+            border-color: black;
+            color: #000000;
+            position: relative;
+            bottom: 120%;
+            left: 20%;
+            font-size: 24px;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        #close {
+            background-color: rgb(161, 182, 165);
+            border: 1cap;
+            border-color: black;
+            color: #000000;
+            position: relative;
+            top: 0%;
+            right: 0%;
+            font-size: 24px;
+            border-radius: 8px;
+            /* padding: 20px; */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.23.0/dist/phaser.js"></script>
+</head>
+
+
+
+<body>
+
+    <div id="game-container">
+        <div id="sidebar">
+            <div style="background-color: #a32626;height:109px">
+                <h3 id="level"></h3>
+            </div>
+
+            <div style="background-color: #b7c093; height: 106px;">
+                <h3 style="font-size: 24px;color: #fff; position: relative; top: 0%; right: 0%; text-align: center;">倒數計時</h3>
+                <h3 id="timer"></h3>
+            </div>
+            <div style="background-color: #ffd5ba;height: 106px;">
+                <h3 style="font-size: 24px;color: #fff; position: relative; top: 0%;right: 0%; text-align: center;">得分</h3>
+                <h3 id="record"></h3>
+            </div>
+            <div style="background-color: #b7c093;height: 106px; "></div>
+            <button id="show">遊戲說明</button>
+            <dialog id="infoModal">
+                <img src="/assets/background_illustrate-03.png"></img>
+                <button id="close">關閉</button>
+            </dialog>
+        </div>
+        <div id="game"></div>
+    </div>
+
+    <!-- <div id="game"></div> -->
+    <script>
+        let btn = document.querySelector("#show");
+        let infoModal = document.querySelector("#infoModal");
+        let close = document.querySelector("#close");
+        btn.addEventListener("click", function () {
+            infoModal.showModal();
+        })
+        close.addEventListener("click", function () {
+            infoModal.close();
+        })
+    </script>
+    <script src="js/player.js"></script>
+    <script src="js/scene1.js"></script>
+    <script src="js/scene2.js"></script>
+    <script src="js/scene3.js"></script>
+    <script src="js/scene4.js"></script>
+    <script src="js/scene5.js"></script>
+    <script src="js/scene6.js"></script>
+    <script src="js/scene7.js"></script>
+    <script src="js/scene8.js"></script>
+    <script src="js/scene9.js"></script>
+    <script src="js/scene10.js"></script>
+    <script src="js/restart.js"></script>
+    <script src="js/end.js"></script>
+    <script src="js/start.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+
+        var config = {
+            type: Phaser.Auto,
+            width: 700,
+            height: 427,
+            parent: 'game',
+            physics: {
+                default: 'arcade',//物理參數
+                arcade: {
+                    debug: false
+                }
+            },
+            scene: [Start, Scene1, Scene2, Scene3, Scene4, Scene5, Scene6, Scene7, Scene8, Scene9, Scene10, Restart, End]
+        };
+
+        var Token;
+        var RecordID;
+        var CurrentLevel;
+        var record = 0;
+        var game = new Phaser.Game(config);
+        var stage = 0;
+       
+
+
+    </script>
+
+
+</body>
+
+</html>
